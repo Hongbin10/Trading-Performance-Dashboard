@@ -1,0 +1,52 @@
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+# ── Node / React ──────────────────────────────────────────────────────────────
+node_modules/
+dist/
+.next/
+.nuxt/
+
+# ── C# / .NET ─────────────────────────────────────────────────────────────────
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.nupkg
+appsettings.json
+
+# ── Environment & Secrets (CRITICAL) ─────────────────────────────────────────
+.env
+.env.*
+!.env.example        # allow the example template
+
+# C# secrets
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+
+# ── Database ──────────────────────────────────────────────────────────────────
+*.sqlite
+*.db
+*.sql.gz
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
