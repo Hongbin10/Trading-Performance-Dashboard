@@ -23,7 +23,9 @@ export default function Overview() {
     <Box>
       <Typography variant="h3" sx={{ mb: 0.5 }}>Overview</Typography>
       <Typography variant="body2" sx={{ mb: 3 }}>
-        All strategies · Live Prices from Finnhub API（Updated every 15 seconds）
+        All strategies · Live Prices from Finnhub REST API（Updated every 15 seconds）
+        <br />
+        Note: Official version uses WebSocket for lower latency
       </Typography>
 
       <LivePriceTicker />

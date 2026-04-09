@@ -2,38 +2,45 @@ import { Box, Card, CardContent, Chip, Grid, Typography } from '@mui/material'
 import { useEffect, useRef, useState } from 'react'
 
 const MARKET_OVERVIEW = [
-  'BINANCE:BTCUSDT', 'BINANCE:ETHUSDT', 'OANDA:USD_JPY',
-  'OANDA:BCO_USD',   'OANDA:XAU_USD',   'OANDA:EUR_USD',
+  'BINANCE:BTCUSDT',
+  'BINANCE:ETHUSDT',
+  'BINANCE:SOLUSDT',
+  'BINANCE:BNBUSDT',
+  'BINANCE:XRPUSDT',
+  'BINANCE:DOGEUSDT',
 ]
 const EQUITIES = ['AAPL', 'MSFT', 'NVDA', 'AMZN', 'META', 'GOOGL']
 const ALL_SYMBOLS = [...MARKET_OVERVIEW, ...EQUITIES]
 
 const DISPLAY_NAMES: Record<string, string> = {
-  'BINANCE:BTCUSDT': 'BTC/USD',
-  'BINANCE:ETHUSDT': 'ETH/USD',
-  'OANDA:USD_JPY':   'USD/JPY',
-  'OANDA:BCO_USD':   'Brent Oil',
-  'OANDA:XAU_USD':   'Gold',
-  'OANDA:EUR_USD':   'EUR/USD',
+  'BINANCE:BTCUSDT':  'BTC/USD',
+  'BINANCE:ETHUSDT':  'ETH/USD',
+  'BINANCE:SOLUSDT':  'SOL/USD',
+  'BINANCE:BNBUSDT':  'BNB/USD',
+  'BINANCE:XRPUSDT':  'XRP/USD',
+  'BINANCE:DOGEUSDT': 'DOGE/USD',
   'AAPL': 'AAPL', 'MSFT': 'MSFT', 'NVDA': 'NVDA',
   'AMZN': 'AMZN', 'META': 'META', 'GOOGL': 'GOOGL',
 }
 
 const MOCK_PRICES: Record<string, number> = {
-  'BINANCE:BTCUSDT': 82450,
-  'BINANCE:ETHUSDT': 1820.4,
-  'OANDA:USD_JPY':   149.82,
-  'OANDA:BCO_USD':    74.61,
-  'OANDA:XAU_USD':  3050.9,
-  'OANDA:EUR_USD':    1.0842,
+  'BINANCE:BTCUSDT':  82450,
+  'BINANCE:ETHUSDT':  1820.4,
+  'BINANCE:SOLUSDT':  142.3,
+  'BINANCE:BNBUSDT':  598.2,
+  'BINANCE:XRPUSDT':  0.5234,
+  'BINANCE:DOGEUSDT': 0.1823,
   'AAPL':  172.34, 'MSFT':  378.92, 'NVDA':  108.46,
   'AMZN':  185.23, 'META':  512.18, 'GOOGL': 155.74,
 }
 
 const DECIMALS: Record<string, number> = {
-  'BINANCE:BTCUSDT': 0, 'BINANCE:ETHUSDT': 1,
-  'OANDA:XAU_USD': 1,   'OANDA:EUR_USD': 4,
-  'OANDA:USD_JPY': 2,   'OANDA:BCO_USD': 2,
+  'BINANCE:BTCUSDT':  0,
+  'BINANCE:ETHUSDT':  1,
+  'BINANCE:SOLUSDT':  2,
+  'BINANCE:BNBUSDT':  1,
+  'BINANCE:XRPUSDT':  4,
+  'BINANCE:DOGEUSDT': 5,
 }
 const getDec = (s: string) => DECIMALS[s] ?? 2
 
@@ -84,7 +91,7 @@ function PriceCard({ symbol, price }: { symbol: string; price: number | undefine
               </Typography>
             </>
           ) : (
-            <Typography sx={{ fontSize: '12px', color: 'text.secondary' }}>awaiting tick</Typography>
+            <Typography sx={{ fontSize: '12px', color: 'text.secondary' }}>Prev close</Typography>
           )}
         </Box>
       </CardContent>
@@ -126,7 +133,7 @@ export default function LivePriceTicker() {
     }
 
     fetchAll()
-    const t = setInterval(fetchAll, 15_000)   // every 15s — stays within free tier
+    const t = setInterval(fetchAll, 15_000)
     return () => clearInterval(t)
   }, [KEY])
 
@@ -165,7 +172,7 @@ export default function LivePriceTicker() {
         />
         {isLive && (
           <Typography sx={{ ml: 'auto', fontSize: '12px', fontFamily: '"IBM Plex Mono", monospace', color: 'text.secondary' }}>
-            Finnhub • Equities: 15 min delay • FX & Crypto: real-time
+            Finnhub · Crypto: real-time · Equities: 15 min delay
           </Typography>
         )}
         {!isLive && (
@@ -175,7 +182,7 @@ export default function LivePriceTicker() {
         )}
       </Box>
 
-      <GroupLabel text="Market overview" />
+      <GroupLabel text="Crypto Overview" />
       <Grid container spacing={1.5} sx={{ mb: 2 }}>
         {MARKET_OVERVIEW.map(sym => (
           <Grid item xs={6} sm={4} md={2} key={sym}>
@@ -184,7 +191,7 @@ export default function LivePriceTicker() {
         ))}
       </Grid>
 
-      <GroupLabel text="Key equities" />
+      <GroupLabel text="Key Equities · NYSE opens 14:30 UK time" />
       <Grid container spacing={1.5}>
         {EQUITIES.map(sym => (
           <Grid item xs={6} sm={4} md={2} key={sym}>
