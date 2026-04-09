@@ -165,7 +165,7 @@ export default function LivePriceTicker() {
         />
         {isLive && (
           <Typography sx={{ ml: 'auto', fontSize: '12px', fontFamily: '"IBM Plex Mono", monospace', color: 'text.secondary' }}>
-            Finnhub · equities 15 min delay · FX &amp; crypto real-time
+            Finnhub • Equities: 15 min delay • FX & Crypto: real-time
           </Typography>
         )}
         {!isLive && (
