@@ -48,7 +48,7 @@ The frontend can switch between the C# and Python backends at runtime via a drop
 
 > Overview — KPI cards, live prices, multi-strategy equity curves, strategy metrics with sparklines
 
-![Overview](docs/screenshots/overview.png)
+![Overview](docs/screenshots/Overview.gif)
 
 > Strategies — AG-Grid with ECharts sparkline per row, View Detail drill-down
 
