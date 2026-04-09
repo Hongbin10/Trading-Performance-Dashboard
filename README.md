@@ -48,11 +48,11 @@ The frontend can switch between the C# and Python backends at runtime via a drop
 
 > Overview — KPI cards, live prices, multi-strategy equity curves, strategy metrics with sparklines
 
-![Overview](docs/screenshots/Overview.gif)
+![Overview](docs/screenshots/overview.png)
 
 > Strategies — AG-Grid with ECharts sparkline per row, View Detail drill-down
 
-![Strategies](docs/screenshots/strategies.png)
+![Strategies](docs/screenshots/trategiess.png)
 
 > Strategy Detail — single strategy deep-dive with equity curve, drawdown, monthly PnL heatmap, asset breakdown
 
@@ -61,10 +61,6 @@ The frontend can switch between the C# and Python backends at runtime via a drop
 > Trade Log — AG-Grid 2,933 records, client-side pagination, multi-filter
 
 ![Trade Log](docs/screenshots/tradelog.png)
-
-> Live Prices — Finnhub WebSocket, price cards flash green/red on tick
-
-![Live Prices](docs/screenshots/live-prices.png)
 
 ---
 

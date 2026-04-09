@@ -5,24 +5,41 @@ import LightModeIcon from '@mui/icons-material/LightMode'
 import { BACKENDS, type BackendKey } from '../../api/client'
 import { useBackend } from '../../context/BackendContext'
 import { useThemeMode } from '../../context/ThemeContext'
+import { useEffect, useState } from 'react'
 
 export default function TopBar() {
   const { current, switchTo } = useBackend()
   const { mode, toggle }      = useThemeMode()
+  const [now, setNow] = useState(new Date())
 
-  const now = new Date().toLocaleDateString('en-GB', {
-    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
-  })
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 1000)
+    return () => clearInterval(timer)
+  }, [])
 
+  const dateStr = now.toLocaleDateString('en-GB', {
+  weekday: 'short', day: '2-digit', month: 'short', year: 'numeric',
+})
+  const timeStr = now.toLocaleTimeString('en-GB', {
+  hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+})
   return (
     <AppBar position="fixed" sx={{ left: 225, width: 'calc(100% - 225px)' }}>
       <Toolbar sx={{ minHeight: '52px !important', px: 2.5, gap: 2 }}>
         <Typography sx={{
           fontFamily: '"IBM Plex Mono", monospace',
-          fontSize: '0.75rem',
+          fontSize: '0.8rem',
           color: 'text.secondary',
         }}>
-          {now}
+            {dateStr}
+      </Typography>
+        <Typography sx={{
+          fontFamily: '"IBM Plex Mono", monospace',
+          fontSize: '0.8rem',
+          color: 'text.secondary',
+          letterSpacing: '0.05em',
+        }}>
+            {timeStr}
         </Typography>
 
         <Box sx={{ flex: 1 }} />
@@ -57,7 +74,7 @@ export default function TopBar() {
               <CircleIcon sx={{ fontSize: '8px', color: '#3fb950' }} />
               <Typography sx={{
                 fontFamily: '"IBM Plex Mono", monospace',
-                fontSize: '0.72rem',
+                fontSize: '0.8rem', 
                 color: '#3fb950',
               }}>
                 {BACKENDS[val as BackendKey].label}
@@ -66,7 +83,7 @@ export default function TopBar() {
           )}
           sx={{
             fontFamily: '"IBM Plex Mono", monospace',
-            fontSize: '0.72rem',
+            fontSize: '0.8rem',
             color: '#3fb950',
             bgcolor: 'rgba(63,185,80,0.08)',
             border: '1px solid rgba(63,185,80,0.25)',
