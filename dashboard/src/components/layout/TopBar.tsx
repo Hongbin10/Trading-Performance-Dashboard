@@ -36,7 +36,7 @@ export default function TopBar() {
         <Typography sx={{
           fontFamily: '"IBM Plex Mono", monospace',
           fontSize: '0.8rem',
-          color: 'text.secondary',
+          color: 'text.primary',
           letterSpacing: '0.05em',
         }}>
             {timeStr}
